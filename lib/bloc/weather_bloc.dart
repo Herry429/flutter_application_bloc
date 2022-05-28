@@ -4,11 +4,13 @@ import 'dart:math';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_application_bloc/model/weather.dart';
 import './bloc.dart';
+import 'weather_bloc.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
-  @Override
+  WeatherBloc(WeatherState initialState) : super(initialState);
+
+
   WeatherState get InitialState => WeatherIntial();
-  @override
   Stream<WeatherState> mapEventToState(
     WeatherEvent event,
   ) async* {

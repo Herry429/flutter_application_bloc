@@ -1,16 +1,17 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter_application_bloc/model/weather.dart';
 import 'package:meta/meta.dart';
 
 @immutable
 abstract class WeatherState extends Equatable {
-  WeatherState([List props = const []]) : super(props);
+  WeatherState([List props = const []]) : super();
 }
 
-class WeatherIntial extends WeatherState {}
+abstract class WeatherIntial extends WeatherState {}
 
-class WeatherLoading extends WeatherState {}
+abstract class WeatherLoading extends WeatherState {}
 
-class WeatherLoded extends WeatherState {
+abstract class WeatherLoded extends WeatherState {
   final Weather weather;
   WeatherLoded(this.weather) : super([weather]);
 }

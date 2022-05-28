@@ -35,26 +35,27 @@ class WeatherPage extends StatelessWidget {
         title: Text("Weather App"),
       ),
       body: BlocProvider(
-          bloc:weatherbloc,
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 16),
-            alignment: Alignment.center,
-            child: BlocBuilder(
-                bloc: WeatherBloc(),
-                builder: (BuildContext context, WeatherState state) {
-                  if (state is WeatherIntial) {
-                    return buildInitialInput();
-                  } else if (state is WeatherLoading) {
-                    return buildLoading();
-                  } else if (state is WeatherLoded) {
-                    return buildColumnWithData(state.weather);
-                  }
-                }),
-          ),
+        bloc: weatherbloc,
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          alignment: Alignment.center,
+          child: BlocBuilder(
+              bloc: WeatherBloc(),
+              builder: (BuildContext context, WeatherState state) {
+                if (state is WeatherIntial) {
+                  return buildInitialInput();
+                } else if (state is WeatherLoading) {
+                  return buildLoading();
+                } else if (state is WeatherLoded) {
+                  return buildColumnWithData(state.weather);
+                }
+              }),
         ),
       ),
     );
   }
+
+  Widget buildLoading() {}
 }
 
 Widget buildInitialInput() {
@@ -131,8 +132,10 @@ class _CityIputFieldState extends State<CityIputField> {
 }
 
 void submitCityName(String cityName) {
-
   final weatherBloc = BlockProvider.of<WeatherBloc>(context);
 
   weatherBloc.dispatch(GetWeather(cityName));
+}
+
+mixin BlockProvider {
 }

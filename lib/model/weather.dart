@@ -5,6 +5,11 @@ class Weather extends Equatable {
   final String cityName;
   final double temperature;
 
-  Weather({@required this.cityName, @required this.temperature})
-      : super([cityName, temperature]);
+  Weather({required this.cityName, required this.temperature})
+      : super(cityName, temperature);
+
+  @override
+  // ignore: todo
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
 }
